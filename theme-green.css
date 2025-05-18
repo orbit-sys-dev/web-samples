@@ -1,0 +1,7 @@
+/* Nature Green: primary #264653, secondary #2a9d8f, accent #e9c46a, light #f1faee */
+:root {
+    --primary-color: #264653;
+    --secondary-color: #2a9d8f;
+    --accent-color: #e9c46a;
+    --light-color: #f1faee;
+}

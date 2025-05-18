@@ -1,0 +1,7 @@
+/* Elegant Dark: primary #121212, secondary #bb86fc, accent #03dac6, light #1e1e1e */
+:root {
+    --primary-color: #121212;
+    --secondary-color: #bb86fc;
+    --accent-color: #03dac6;
+    --light-color: #1e1e1e;
+}

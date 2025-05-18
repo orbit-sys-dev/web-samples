@@ -628,6 +628,47 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Theme switcher */
+        #theme-switcher {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 1100;
+            font-size: 0.9rem;
+        }
+        #theme-switcher button {
+            background-color: var(--secondary-color);
+            color: #fff;
+            border: none;
+            padding: 0.4rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #theme-options {
+            position: absolute;
+            right: 0;
+            bottom: 120%;
+            list-style: none;
+            margin: 0;
+            padding: 0.25rem 0;
+            background-color: var(--light-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #theme-options[hidden] {
+            display: none;
+        }
+        #theme-options li {
+            padding: 0.25rem 0.75rem;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        #theme-options li:hover {
+            background-color: var(--accent-color);
+            color: var(--light-color);
+        }
     </style>
 </head>
 <body>
@@ -859,6 +900,16 @@
             </div>
         </div>
     </footer>
+    <div id="theme-switcher">
+        <button id="theme-toggle" aria-haspopup="true" aria-expanded="false">🎨 Theme</button>
+        <ul id="theme-options" hidden>
+            <li data-theme="light">Minimal Light</li>
+            <li data-theme="dark">Elegant Dark</li>
+            <li data-theme="green">Nature Green</li>
+            <li data-theme="coral">Sunset Coral</li>
+            <li data-theme="neon">Retro Neon</li>
+        </ul>
+    </div>
 
     <script>
         // スクロール時のヘッダー変更
@@ -1054,4 +1105,7 @@
                 }, 200);
             }
         });
-        
+    </script>
+    <script defer src="theme-switcher.js"></script>
+</body>
+</html>

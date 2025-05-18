@@ -1,0 +1,7 @@
+/* Minimal Light: primary #333333, secondary #0077b6, accent #0096c7, light #ffffff */
+:root {
+    --primary-color: #333333;
+    --secondary-color: #0077b6;
+    --accent-color: #0096c7;
+    --light-color: #ffffff;
+}

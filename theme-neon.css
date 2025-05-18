@@ -1,0 +1,7 @@
+/* Retro Neon: primary #0d0221, secondary #ff006e, accent #8338ec, light #fefae0 */
+:root {
+    --primary-color: #0d0221;
+    --secondary-color: #ff006e;
+    --accent-color: #8338ec;
+    --light-color: #fefae0;
+}

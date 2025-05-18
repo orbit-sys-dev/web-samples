@@ -1,0 +1,6 @@
+:root[data-theme="oceanic-analogous"] {
+  --c-primary: hsl(210 100% 50%);
+  --c-accent : hsl(138 63% 55%);
+  --c-bg     : hsl(0 0% 100%);
+  --c-fg     : hsl(0 0% 10%);
+}

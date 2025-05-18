@@ -1,0 +1,49 @@
+:root {
+  --font-main: 'Helvetica Neue', Arial, sans-serif;
+  --c-primary-hover: hsl(from var(--c-primary) h s calc(l - 5%));
+  --c-primary-focus: hsl(from var(--c-primary) h s calc(l + 5%));
+  --c-primary-disabled: hsl(from var(--c-primary) h s calc(l - 10%));
+  --c-accent-hover: hsl(from var(--c-accent) h s calc(l - 5%));
+  --c-accent-focus: hsl(from var(--c-accent) h s calc(l + 5%));
+  --c-accent-disabled: hsl(from var(--c-accent) h s calc(l - 10%));
+}
+body {
+  font-family: var(--font-main);
+  color: var(--c-fg);
+  background-color: var(--c-bg);
+}
+#theme-toggle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background-color: var(--c-primary);
+  color: var(--c-bg);
+  border: none;
+  cursor: pointer;
+}
+#theme-list {
+  position: fixed;
+  bottom: 3rem;
+  right: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0;
+  background-color: var(--c-bg);
+  border: 1px solid var(--c-accent);
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+#theme-list[hidden] { display:none; }
+#theme-list li {
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#theme-list li:hover,
+#theme-list li:focus {
+  background-color: var(--c-accent-hover);
+  color: var(--c-bg);
+}

@@ -1,0 +1,6 @@
+:root[data-theme="minimal-light"] {
+  --c-primary: hsl(212 100% 55%);
+  --c-accent : hsl(28 100% 55%);
+  --c-bg     : hsl(0 0% 100%);
+  --c-fg     : hsl(0 0% 10%);
+}

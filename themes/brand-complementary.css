@@ -1,0 +1,6 @@
+:root[data-theme="brand-complementary"] {
+  --c-primary: hsl(212 100% 55%);
+  --c-accent : hsl(32 100% 50%);
+  --c-bg     : hsl(0 0% 100%);
+  --c-fg     : hsl(0 0% 7%);
+}

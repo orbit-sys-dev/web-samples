@@ -30,7 +30,9 @@
 
   function applyTheme(id){
     link.href = `themes/${id}.css`;
-    document.body.dataset.theme = id;
+    // Apply the theme attribute to the root element so that
+    // theme styles using :root[data-theme="..."] work correctly
+    document.documentElement.dataset.theme = id;
     localStorage.setItem('theme', id);
     contrastCheck();
   }

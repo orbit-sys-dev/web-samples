@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>モダンデザインスタジオ</title>
+    <style>
+        /* ベースとなるスタイル */
+        :root {
+            --primary-color: #2d3142;
+            --secondary-color: #ef8354;
+            --light-color: #f5f5f5;
+            --accent-color: #4f5d75;
+            --font-main: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        /* ヘッダーセクション */
+        header {
+            background-color: var(--primary-color);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-scrolled {
+            padding: 0.8rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        /* ヒーローセクション */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .hero-content {
+            width: 100%;
+            padding-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-color);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            border-color: white;
+        }
+        
+        .hero-shape {
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 700px;
+            height: 700px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .hero-shape:before {
+            content: '';
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            width: 400px;
+            height: 400px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+        
+        /* サービスセクション */
+        .section {
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: var(--secondary-color);
+            opacity: 0.05;
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover:before {
+            height: 100%;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: #666;
+        }
+        
+        /* ポートフォリオセクション */
+        .portfolio {
+            background-color: #f9f9f9;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(45, 49, 66, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            transition-delay: 0.1s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay h3,
+        .portfolio-item:hover .portfolio-overlay p {
+            transform: translateY(0);
+        }
+        
+        /* テスティモニアルセクション */
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials .section-title h2:after {
+            background-color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .quote-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            opacity: 0.2;
+        }
+        
+        /* コンタクトセクション */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 2rem;
+            color: #666;
+        }
+        
+        .contact-details {
+            list-style: none;
+        }
+        
+        .contact-details li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            margin-right: 1rem;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(239, 131, 84, 0.3);
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* フッター */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .footer-social {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .footer-social a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 991px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 250px;
+                height: calc(100vh - 70px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 1.5rem 0;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .burger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .burger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .burger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-col h4:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+            
+            .footer-links a:hover {
+                padding-left: 0;
+            }
+        }
+
+        /* アニメーション用のクラス */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダーセクション -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">モダン<span>デザイン</span></a>
+                <ul class="nav-menu">
+                    <li><a href="#home">ホーム</a></li>
+                    <li><a href="#services">サービス</a></li>
+                    <li><a href="#portfolio">ポートフォリオ</a></li>
+                    <li><a href="#testimonials">お客様の声</a></li>
+                    <li><a href="#contact">お問い合わせ</a></li>
+                </ul>
+                <div class="burger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>クリエイティブ<br>デザインスタジオ</h1>
+                <p>私たちはクリエイティブなデザインとテクノロジーを組み合わせて、あなたのブランドを次のレベルへと導きます。革新的なソリューションを提供し、あなたのビジョンを現実にします。</p>
+                <a href="#contact" class="btn">お問い合わせ</a>
+            </div>
+        </div>
+        <div class="hero-shape"></div>
+    </section>
+
+    <!-- サービスセクション -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>サービス</h2>
+                <p>クライアントのニーズに合わせた最高品質のサービスを提供します</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">&#9733;</div>
+                    <h3>ウェブデザイン</h3>
+                    <p>モダンで使いやすい、レスポンシブなウェブサイトをデザインします。ユーザー体験を重視し、ブランドの個性を表現します。</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">&#9731;</div>
+                    <h3>グラフィックデザイン</h3>
+                    <p>ロゴ、パンフレット、名刺などのブランドアイデンティティを創造します。一貫性のあるビジュアルで強い印象を残します。</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">&#9881;</div>
+                    <h3>ウェブ開発</h3>
+                    <p>最新のテクノロジーを使用して、高性能でセキュアなウェブアプリケーションを開発します。あらゆるデバイスに最適化されます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ポートフォリオセクション -->
+    <section id="portfolio" class="section portfolio">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>ポートフォリオ</h2>
+                <p>これまでに手がけたプロジェクトの一部をご紹介します</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-in">
+                    <img src="/api/placeholder/400/320" alt="ポートフォリオ画像" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>ブランドリデザイン</h3>
+                        <p>企業ブランドの刷新プロジェクト</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <img src="/api/placeholder/400/320" alt="ポートフォリオ画像" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>ECサイト構築</h3>
+                        <p>オンラインショップのデザインと実装</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <img src="/api/placeholder/400/320" alt="ポートフォリオ画像" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>モバイルアプリ</h3>
+                        <p>ユーザーフレンドリーなアプリケーション</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- テスティモニアルセクション -->
+    <section id="testimonials" class="section testimonials">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>お客様の声</h2>
+                <p>私たちのサービスをご利用いただいたお客様からのフィードバック</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <p>「モダンデザインさんには当社のブランドリニューアルを依頼しました。プロフェッショナルなアプローチと創造性に大変満足しています。期待以上の成果を出していただき感謝しています。」</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/60/60" alt="田中様" class="author-img">
+                        <div class="author-info">
+                            <h4>田中 健太</h4>
+                            <p>株式会社テックイノベーション CEO</p>
+                        </div>
+                    </div>
+                    <div class="quote-icon">❝</div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <p>「新しいウェブサイトは当社の売上に大きく貢献しています。ユーザーエクスペリエンスの向上とモバイル対応によって、コンバージョン率が50%向上しました。素晴らしい仕事をありがとうございます。」</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/60/60" alt="佐藤様" class="author-img">
+                        <div class="author-info">
+                            <h4>佐藤 美咲</h4>
+                            <p>グリーンライフ株式会社 マーケティング部長</p>
+                        </div>
+                    </div>
+                    <div class="quote-icon">❝</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- コンタクトセクション -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>お問い合わせ</h2>
+                <p>プロジェクトについてお気軽にご相談ください</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <h3>お問い合わせ情報</h3>
+                    <p>プロジェクトについてのご相談、お見積もりのご依頼など、お気軽にお問い合わせください。専門スタッフが丁寧にご対応いたします。</p>
+                    <ul class="contact-details">
+                        <li>
+                            <span class="contact-icon">📍</span>
+                            <span>〒106-0032 東京都港区六本木1-1-1</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">📱</span>
+                            <span>03-1234-5678</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">✉️</span>
+                            <span>info@moderndesign.jp</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-form fade-in">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="お名前" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="メールアドレス" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="件名">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="メッセージ" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">送信する</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>モダンデザイン</h4>
+                    <p>クリエイティブなデザインとテクノロジーで、あなたのビジネスを成功に導きます。</p>
+                    <div class="footer-social">
+                        <a href="#"><span>fb</span></a>
+                        <a href="#"><span>tw</span></a>
+                        <a href="#"><span>ig</span></a>
+                        <a href="#"><span>li</span></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>サービス</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">ウェブデザイン</a></li>
+                        <li><a href="#">グラフィックデザイン</a></li>
+                        <li><a href="#">ウェブ開発</a></li>
+                        <li><a href="#">ブランディング</a></li>
+                        <li><a href="#">SEO最適化</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>会社情報</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">会社概要</a></li>
+                        <li><a href="#">私たちのチーム</a></li>
+                        <li><a href="#">採用情報</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">利用規約</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>ニュースレター</h4>
+                    <p>最新情報をお届けします。メールアドレスをご登録ください。</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="メールアドレス">
+                        </div>
+                        <button type="submit" class="btn">登録する</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 モダンデザイン. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // スクロール時のヘッダー変更
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // ハンバーガーメニューの動作
+        const burger = document.querySelector('.burger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        burger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+
+        // ナビゲーションリンクのスムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // モバイルメニューが開いている場合は閉じる
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    burger.classList.remove('active');
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // スクロールアニメーション
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('appear');
+                }
+            });
+        }
+        
+        // 初期チェック
+        checkFade();
+        
+        // スクロール時にチェック
+        window.addEventListener('scroll', checkFade);
+
+        // ポートフォリオアイテムのホバーエフェクト強化
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        portfolioItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.querySelector('.portfolio-img').style.transform = 'scale(1.1)';
+                this.querySelector('.portfolio-overlay').style.opacity = '1';
+                
+                const title = this.querySelector('h3');
+                const desc = this.querySelector('p');
+                
+                title.style.transform = 'translateY(0)';
+                desc.style.transform = 'translateY(0)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.querySelector('.portfolio-img').style.transform = 'scale(1)';
+                this.querySelector('.portfolio-overlay').style.opacity = '0';
+                
+                const title = this.querySelector('h3');
+                const desc = this.querySelector('p');
+                
+                title.style.transform = 'translateY(20px)';
+                desc.style.transform = 'translateY(20px)';
+            });
+        });
+
+        // フォーム送信処理（デモ用）
+        const contactForm = document.querySelector('.contact-form form');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // フォームデータの取得
+                const formData = new FormData(this);
+                const formValues = {};
+                
+                for (let [key, value] of formData.entries()) {
+                    formValues[key] = value;
+                }
+                
+                // 送信ボタンを無効化
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                submitButton.textContent = '送信中...';
+                submitButton.disabled = true;
+                
+                // 実際の送信処理の代わりにタイマーで成功メッセージを表示
+                setTimeout(() => {
+                    // 成功メッセージの表示
+                    const successMessage = document.createElement('div');
+                    successMessage.classList.add('success-message');
+                    successMessage.style.color = 'green';
+                    successMessage.style.padding = '1rem';
+                    successMessage.style.marginTop = '1rem';
+                    successMessage.style.backgroundColor = 'rgba(0, 128, 0, 0.1)';
+                    successMessage.style.borderRadius = '5px';
+                    successMessage.textContent = 'お問い合わせありがとうございます。担当者が確認次第、ご連絡いたします。';
+                    
+                    // フォームをリセット
+                    this.reset();
+                    
+                    // 送信ボタンを元に戻す
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                    
+                    // メッセージを表示
+                    this.appendChild(successMessage);
+                    
+                    // 3秒後にメッセージを削除
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 3000);
+                }, 1500);
+            });
+        }
+
+        // ニュースレターフォーム処理（デモ用）
+        const newsletterForm = document.querySelector('.footer-col form');
+        
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const emailInput = this.querySelector('input[type="email"]');
+                const submitButton = this.querySelector('button[type="submit"]');
+                
+                if (emailInput.value) {
+                    // 送信ボタンを無効化
+                    const originalText = submitButton.textContent;
+                    submitButton.textContent = '登録中...';
+                    submitButton.disabled = true;
+                    
+                    // 実際の送信処理の代わりにタイマーで成功メッセージを表示
+                    setTimeout(() => {
+                        // フォームの代わりに成功メッセージを表示
+                        const formParent = this.parentElement;
+                        formParent.removeChild(this);
+                        
+                        const successMessage = document.createElement('div');
+                        successMessage.classList.add('newsletter-success');
+                        successMessage.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                        successMessage.style.padding = '1rem';
+                        successMessage.style.borderRadius = '5px';
+                        successMessage.style.marginTop = '1rem';
+                        successMessage.innerHTML = '<p>ニュースレターにご登録いただきありがとうございます。最新情報をお届けします。</p>';
+                        
+                        formParent.appendChild(successMessage);
+                    }, 1000);
+                }
+            });
+        }
+
+        // ページロード時のアニメーション
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+            
+            // ヒーローセクションのアニメーション
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.opacity = '0';
+                heroContent.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    heroContent.style.transition = 'all 0.8s ease';
+                    heroContent.style.opacity = '1';
+                    heroContent.style.transform = 'translateY(0)';
+                }, 200);
+            }
+        });
+        
